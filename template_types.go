@@ -11,6 +11,7 @@ type Service struct {
 	Kind       string // service, loadBalancerService
 	Vip        string
 	Fqdn       string
+	Links      map[string]string
 	Ports      []ServicePort
 	Labels     LabelMap
 	Metadata   MetadataMap
@@ -32,11 +33,11 @@ type Container struct {
 
 // Host represents a Rancher Host.
 type Host struct {
-	UUID     string
-	Name     string
-	Address  string
-	Hostname string
-	Labels   LabelMap
+	UUID       string
+	Name       string
+	Address    string
+	Hostname   string
+	Labels     LabelMap
 	Containers []Container
 }
 
@@ -49,7 +50,7 @@ type Self struct {
 
 // ServicePort represents a port exposed by a service
 type ServicePort struct {
-    ExternalIp   string
+	ExternalIp   string
 	PublicPort   string
 	InternalPort string
 	Protocol     string
@@ -102,7 +103,6 @@ func (m MetadataMap) GetValue(key string, v ...interface{}) interface{} {
 }
 
 //RAP Adding a storage place to enable modifying data inside template loop/conditional structure
-
 type Cell struct{ v interface{} }
 
 func NewCell(v ...interface{}) (*Cell, error) {

@@ -53,7 +53,7 @@ Function from jwilder/dockergen : list files from a directory .
 
 ```
 type Port struct {
-    ExternalIp   string
+  ExternalIp   string
 	PublicPort   string
 	InternalPort string
 	Protocol     string
@@ -117,12 +117,12 @@ Path to the destination file. If omitted, then the generated content is printed 
 
 ```
 rancher-gen --onetime --notify-cmd="/usr/sbin/service nginx reload" \
-/etc/rancher-gen/nginx.tmpl /etc/nginx/nginx.conf
+	/etc/rancher-gen/nginx.tmpl /etc/nginx/nginx.conf
 ```
 
 ```
 rancher-gen --interval 2 --check-cmd="/usr/sbin/nginx -t -c {{staging}}" \
---notify-cmd="/usr/sbin/service nginx reload" /etc/rancher-gen/nginx.tmpl /etc/nginx/nginx.conf
+	--notify-cmd="/usr/sbin/service nginx reload" /etc/rancher-gen/nginx.tmpl /etc/nginx/nginx.conf
 ```
 
 ### Configuration file
