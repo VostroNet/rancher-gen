@@ -1,5 +1,5 @@
 FROM alpine:edge
 RUN apk add --no-cache git go build-base
-RUN cd /tmp && git clone https://github.com/VostroNet/rancher-gen.git
+#RUN cd /tmp && git clone https://github.com/VostroNet/rancher-gen.git
 WORKDIR /tmp/
 CMD ./compile.sh

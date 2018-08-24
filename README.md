@@ -1,15 +1,8 @@
 [![build status](https://gitlab.com/adi90x/rancher-gen-rap/badges/master/build.svg)](https://gitlab.com/adi90x/rancher-gen-rap/commits/master)![License MIT](https://img.shields.io/badge/license-MIT-blue.svg) 
 
-Rancher-Gen-RAP
+Rancher-Gen
 ===============
-
-Fork from the excellent [janeczku/go-rancher-gen](https://github.com/janeczku/go-rancher-gen) 
-
-This fork is used to build [adi90x/rancher-active-proxy](https://gitlab.com/adi90x/rancher-active-proxy).
-
-This repo is auto build on push : [Rancher-gen-RAP](https://gitlab.com/adi90x/rancher-gen-rap/builds/artifacts/master/download?job=compile-go)
-
-This repo is build using Go 1.7 to enable nicer templates !
+This repo is built using Go 1.7 for nicer templates !
 
 Original Readme give most information but those functions have also been added :
 

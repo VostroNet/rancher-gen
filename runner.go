@@ -266,7 +266,7 @@ func (r *runner) createContext() (*TemplateContext, error) {
 			Service: c.ServiceName,
 			Health:  c.HealthState,
 			State:   c.State,
-			Labels:  LabelMap(c.Labels),		
+			Labels:  LabelMap(c.Labels),
 		}
 		for _, h := range hosts {
 			if h.UUID == c.HostUUID {
@@ -277,7 +277,7 @@ func (r *runner) createContext() (*TemplateContext, error) {
 		container.Ports = parseServicePorts(c.Ports)
 		containers = append(containers, container)
 	}
-	
+
 	hosts = make([]Host, 0)
 	for _, h := range metaHosts {
 		host := Host{
@@ -305,6 +305,7 @@ func (r *runner) createContext() (*TemplateContext, error) {
 			Kind:     s.Kind,
 			Vip:      s.Vip,
 			Fqdn:     s.Fqdn,
+			Links:    s.Links,
 			Labels:   LabelMap(s.Labels),
 			Metadata: MetadataMap(s.Metadata),
 		}
@@ -340,11 +341,11 @@ func parseServicePorts(ports []string) []ServicePort {
 	var ret []ServicePort
 	for _, port := range ports {
 		parts := strings.Split(port, ":")
-		if  len(parts) == 2 {
+		if len(parts) == 2 {
 			public := parts[0]
 			if parts_ := strings.Split(parts[1], "/"); len(parts_) == 2 {
 				ret = append(ret, ServicePort{
-				    ExternalIp:   "",
+					ExternalIp:   "",
 					PublicPort:   public,
 					InternalPort: parts_[0],
 					Protocol:     parts_[1],
@@ -352,12 +353,12 @@ func parseServicePorts(ports []string) []ServicePort {
 				continue
 			}
 		}
-		if  len(parts) == 3 {
+		if len(parts) == 3 {
 			externalip := parts[0]
 			public := parts[1]
 			if parts_ := strings.Split(parts[2], "/"); len(parts_) == 2 {
 				ret = append(ret, ServicePort{
-				    ExternalIp:   externalip,
+					ExternalIp:   externalip,
 					PublicPort:   public,
 					InternalPort: parts_[0],
 					Protocol:     parts_[1],
@@ -365,7 +366,7 @@ func parseServicePorts(ports []string) []ServicePort {
 				continue
 			}
 		}
-		
+
 		log.Warnf("Unexpected format of service port: %s", port)
 	}
 
